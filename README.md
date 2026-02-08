@@ -24,5 +24,5 @@ dotnet test CSCI106.sln
 All assignments require the GitHub Actions CI checks to be passing. The CI
 workflow runs the build and test suite on every push and pull request to main.
 
-## Student Author.
+## Student Author
 Juan Wilches 

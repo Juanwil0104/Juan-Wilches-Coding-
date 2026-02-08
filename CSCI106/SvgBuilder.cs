@@ -21,6 +21,18 @@
             };
         }
 
+        // Basic formula for a rectangle 
+        public void AddRect(uint x, uint y, uint width, uint height, string fill)
+        {
+            Buffer += $"<rect x=\"{x}\" y=\"{y}\" width=\"{width}\" height=\"{height}\" fill=\"{fill}\" />";
+        }
+
+        // Positioned + rounded rectangle
+        public void AddRoundedRect(uint x, uint y, uint width, uint height, uint rx, uint ry, string fill)
+        {
+            Buffer += $"<rect x=\"{x}\" y=\"{y}\" width=\"{width}\" height=\"{height}\" rx=\"{rx}\" ry=\"{ry}\" fill=\"{fill}\" />";
+        }
+
         public string Build() =>
             string.Format(SVG_HEADER_TEMPLATE, Width, Height)
                 + Buffer
