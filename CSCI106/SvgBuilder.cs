@@ -21,15 +21,43 @@
             };
         }
 
-        // Basic formula for a rectangle 
+        // Rectangle validation method
+        private bool IsValidRect(uint x, uint y, uint width, uint height)
+        {
+            // Must have non-zero dimensions
+            if (width == 0 || height == 0)
+                return false;
+
+            // Completely outside to the right
+            if (x >= Width)
+                return false;
+
+            // Completely outside below
+            if (y >= Height)
+                return false;
+
+            return true;
+        }
+
+        // Basic rectangle
         public void AddRect(uint x, uint y, uint width, uint height, string fill)
         {
+            if (!IsValidRect(x, y, width, height))
+            {
+                throw new ArgumentException("Invalid rectangle dimensions.");
+            }
+
             Buffer += $"<rect x=\"{x}\" y=\"{y}\" width=\"{width}\" height=\"{height}\" fill=\"{fill}\" />";
         }
 
-        // Positioned + rounded rectangle
+        // Rounded rectangle
         public void AddRoundedRect(uint x, uint y, uint width, uint height, uint rx, uint ry, string fill)
         {
+            if (!IsValidRect(x, y, width, height))
+            {
+                throw new ArgumentException("Invalid rectangle dimensions.");
+            }
+
             Buffer += $"<rect x=\"{x}\" y=\"{y}\" width=\"{width}\" height=\"{height}\" rx=\"{rx}\" ry=\"{ry}\" fill=\"{fill}\" />";
         }
 
